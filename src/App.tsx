@@ -10,14 +10,26 @@ import { PersonSchemaa } from './utils/PersonSchemaa';
 
 const {SmsModule} = NativeModules;
 
+
 function HomeScreen() {
+
+  const readLatestSmsByPhoneNumber = async (phoneNumber: string) => {
+    try {
+      // Request SMS permission if not granted
+      await SmsModule.checkSmsPermission();
+  
+      // Read the latest SMS by phone number
+      const smsList = await SmsModule.readSmsByPhoneNumber(phoneNumber);
+      
+      // Process the retrieved SMS list
+      console.log('Latest SMS:', smsList); // Displaying the latest SMS body
+    } catch (error) {
+      console.error('Error reading SMS:', error.message);
+    }
+  };
   useEffect(() => {
-    const personDB = new Database([PersonSchemaa]);
-    
- 
-    const allData = personDB.get(123);
-    console.log(allData);
-    personDB.closeRealm();
+    const targetPhoneNumber = '+989124105188'; // Replace with the desired phone number
+readLatestSmsByPhoneNumber(targetPhoneNumber);
     
   });
 
