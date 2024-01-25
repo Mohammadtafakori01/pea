@@ -1,4 +1,5 @@
 import Realm from 'realm';
+import IDevice from '../interfaces/IDevice';
 
 interface RealmData {
   [key: string]: any;
@@ -17,7 +18,7 @@ export default class Database {
     }
   }
 
-  public update(id: number, updatedData: RealmData) {
+  public update(i: number, id: number, updatedData: RealmData) {
     try {
       if (!this.realm) {
         throw new Error(
@@ -26,7 +27,7 @@ export default class Database {
       }
 
       // Assume the schema name is the first schema in the list
-      const schemaName = this.schemas[0]?.name;
+      const schemaName = this.schemas[i]?.name;
 
       if (!schemaName) {
         throw new Error(
@@ -53,7 +54,8 @@ export default class Database {
     }
   }
 
-  public get(id: number) {
+  public get(i: number, id: number) {
+    
     try {
       if (!this.realm) {
         throw new Error(
@@ -62,7 +64,7 @@ export default class Database {
       }
 
       // Assume the schema name is the first schema in the list
-      const schemaName = this.schemas[0]?.name;
+      const schemaName = this.schemas[i]?.name;
 
       if (!schemaName) {
         throw new Error(
@@ -80,7 +82,7 @@ export default class Database {
     }
   }
 
-  public delete(id: number) {
+  public delete(i: number, id: number) {
     try {
       if (!this.realm) {
         throw new Error(
@@ -89,7 +91,7 @@ export default class Database {
       }
 
       // Assume the schema name is the first schema in the list
-      const schemaName = this.schemas[0]?.name;
+      const schemaName = this.schemas[i]?.name;
 
       if (!schemaName) {
         throw new Error(
@@ -114,7 +116,7 @@ export default class Database {
     }
   }
 
-  public getAll() {
+  public getAll(i: number) {
     try {
       if (!this.realm) {
         throw new Error(
@@ -123,7 +125,7 @@ export default class Database {
       }
 
       // Assume the schema name is the first schema in the list
-      const schemaName = this.schemas[0]?.name;
+      const schemaName = this.schemas[i]?.name;
 
       if (!schemaName) {
         throw new Error(
@@ -131,17 +133,18 @@ export default class Database {
         );
       }
 
-      const allData = this.realm.objects(schemaName);
-      console.log('All data retrieved successfully:', allData);
+      const allData = Array.from(this.realm.objects<Realm.Object & IDevice>(schemaName));
 
       return allData;
     } catch (error) {
+      const dvs: [] = [];
       console.error('Error retrieving all data:', error);
-      return [];
+   
+      return dvs;
     }
   }
 
-  public insert(data: RealmData) {
+  public insert(i: number, data: RealmData) {
     try {
       if (!this.realm) {
         throw new Error(
@@ -150,7 +153,7 @@ export default class Database {
       }
 
       // Assume the schema name is the first schema in the list
-      const schemaName = this.schemas[0]?.name;
+      const schemaName = this.schemas[i]?.name;
 
       if (!schemaName) {
         throw new Error(
@@ -159,7 +162,11 @@ export default class Database {
       }
 
       this.realm.write(() => {
-        this.realm!.create(schemaName, data);
+        const id = new Date().getTime();
+      
+        // Merge the generated ID with the provided data
+        const newData = { id, ...data };
+        this.realm!.create(schemaName, newData);
       });
 
       console.log('Data inserted successfully!');

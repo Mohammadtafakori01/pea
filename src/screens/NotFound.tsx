@@ -24,7 +24,7 @@ const styles = StyleSheet.create({
     fontSize: 24,
     marginBottom: 10,
     fontFamily: 'Samim',
-    color: 'purple',
+    color: 'darkgoldenrod',
   },
   subText: {
     fontSize: 16,

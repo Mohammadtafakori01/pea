@@ -1,13 +1,13 @@
 import React from "react";
-import { Text, View, StyleSheet } from "react-native";
+import { Text, View, StyleSheet, Touchable, TouchableOpacity } from "react-native";
 import IDevice from "../../interfaces/IDevice";
 import { commonStyles } from "../../utils/commonStyles";
 
-function Device({ title }: IDevice) {
+function Device({ item, title, navigation }: any) {
     return (
-        <View style={commonStyles.deviceContainer}>
+        <TouchableOpacity onPress={() => navigation.navigate("Device", {item})} style={commonStyles.deviceContainer}>
             <Text style={commonStyles.deviceTitle}>{title}</Text>
-        </View>
+        </TouchableOpacity>
     );
 }
 

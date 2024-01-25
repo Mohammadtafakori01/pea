@@ -1,4 +1,6 @@
 export default interface IDevice {
-    title: string
-  };
-  
+  id: number;
+  title: string;
+  password: string;
+  phonenumber: string;
+}

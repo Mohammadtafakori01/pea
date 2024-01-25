@@ -27,7 +27,7 @@ export const commonStyles = StyleSheet.create({
     elevation: 5, // Make the component take up the full width
   },
   deviceTitle: {
-    fontSize: 16,
+    fontSize: 18,
     fontFamily: 'Samim',
     color: '#333', // Set your text color
   },
@@ -57,13 +57,13 @@ export const commonStyles = StyleSheet.create({
     marginVertical: 20,
   },
   connectway_button: {
-    borderColor: 'purple',
+    borderColor: 'darkgoldenrod',
     borderWidth: 2,
     padding: 10,
     borderRadius: 10,
     alignItems: 'center',
     paddingVertical: 25,
-    backgroundColor: "#fff",
+    backgroundColor: '#fff',
   },
   connectway_icon: {
     width: 60,
@@ -72,16 +72,16 @@ export const commonStyles = StyleSheet.create({
   },
   connectway_buttonText: {
     marginTop: 5,
-    color: 'purple',
+    color: 'darkgoldenrod',
     fontSize: 18,
-    fontFamily: "Samim"
+    fontFamily: 'Samim',
   },
   add_dvc_container: {
     flex: 1,
     justifyContent: 'flex-start',
     alignItems: 'center',
     padding: 16,
-    backgroundColor: "#fff"
+    backgroundColor: '#fff',
   },
   add_dvc_inputContainer: {
     marginBottom: 16,
@@ -90,58 +90,75 @@ export const commonStyles = StyleSheet.create({
   add_dvc_label: {
     fontSize: 16,
     marginBottom: 8,
-    fontFamily: "Samim",
-    color: "#333"
+    fontFamily: 'Samim',
+    color: '#333',
   },
   add_dvc_input: {
     width: '100%',
     height: 50,
-    borderColor: 'purple',
+    borderColor: 'darkgoldenrod',
     borderWidth: 1,
     borderRadius: 8,
     paddingHorizontal: 10,
     fontSize: 16,
-    fontFamily: "Samim",
-    textAlign: "center",
-    textAlignVertical: "center"
+    fontFamily: 'Samim',
+    textAlign: 'center',
+    textAlignVertical: 'center',
   },
   add_dvc_button: {
     marginTop: 16,
-    backgroundColor: '#f0f0ff',
+    backgroundColor: '#B8860B20',
     padding: 10,
     borderRadius: 8,
     borderWidth: 1,
-    borderColor: "purple"
+    borderColor: 'darkgoldenrod',
   },
   add_dvc_buttonText: {
-    color: "purple",
+    color: 'darkgoldenrod',
     fontSize: 16,
     textAlign: 'center',
-    fontFamily: "Samim",
+    fontFamily: 'Samim',
   },
   addButton: {
-    backgroundColor: '#f0f0ff',
+    backgroundColor: '#B8860B',
     borderWidth: 1,
-    borderColor: "purple", // Set your button background color
+    borderColor: 'darkgoldenrod', // Set your button background color
     padding: 6,
     borderRadius: 5,
     alignItems: 'center',
     margin: 10,
     flex: 1,
-    flexDirection: "row",
-    justifyContent: "space-around"
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+  },
+  syncButton: {
+    backgroundColor: '#B8860B20',
+    borderWidth: 1,
+    borderColor: 'darkgoldenrod', // Set your button background color
+    padding: 2,
+    borderRadius: 5,
+    alignItems: 'center',
+    margin: 3,
+    flexDirection: 'row', 
+    maxHeight: 25,
+    justifyContent: 'space-around',
+    width: 90,
   },
   burger: {},
   text: {
     fontFamily: 'Samim',
   },
   addButtonText: {
-    color: "#8a3ab9",
-    fontSize: 16
+    color: '#fff',
+    fontSize: 16,
   },
   icon: {
     width: 32,
     height: 32,
+  },
+  icon12: {
+    width: 12,
+    height: 12,
   },
   input: {
     flex: 1,
@@ -165,5 +182,62 @@ export const commonStyles = StyleSheet.create({
   iconImage: {
     width: '100%',
     height: '100%',
+  },
+  iconImageHalf: {
+    width: '70%',
+    height: '70%',
+    resizeMode: 'contain',
+  },
+  main_parent: {
+    flex: 1,
+    flexDirection: 'column',
+    padding: 25,
+    gap: 15,
+  },
+  main_1: {
+    flex: 1,
+    borderWidth: 1,
+    borderColor: '#aaa',
+    borderRadius: 10,
+    backgroundColor: '#ffffff',
+    flexDirection: 'column',
+    padding: 10,
+  },
+  button_icon: {
+    flex: 1,
+    maxWidth: '25%',
+    padding: 5,
+    flexDirection: 'column',
+    alignItems: 'center',
+    borderWidth: 1,
+    borderColor: 'darkgoldenrod',
+    borderRadius: 10,
+    aspectRatio: 1 / 1,
+    backgroundColor: "#b8860b15"
+  },
+  button_icon_black: {
+    flex: 1,
+    maxWidth: '25%',
+    paddingTop: 4,
+    flexDirection: 'column',
+    alignItems: 'center',
+    borderWidth: 1,
+    borderColor: 'black',
+    borderRadius: 10,
+    aspectRatio: 1 / 1,
+    backgroundColor: "#fff8"
+  },
+  main_2: {
+    flex: 2,
+    borderWidth: 1,
+    borderColor: '#aaa',
+    borderRadius: 10,
+    backgroundColor: '#ffffff',
+  },
+  main_3: {
+    flex: .7,
+    flexDirection: "row",
+    gap: 10,
+    alignItems: 'center',
   },
 });
