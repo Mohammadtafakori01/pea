@@ -1,11 +1,11 @@
 import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet, Image } from 'react-native';
 
 const FullscreenComponent = () => {
   return (
     <View style={styles.container}>
       <View style={styles.fullscreen}>
-        <Text style={styles.centeredText}>Your Logo</Text>
+        <Image style={{width: 150, height: 150}} source={require("../../assets/logo.png")}/>
       </View>
     </View>
   );
