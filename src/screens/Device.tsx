@@ -4,7 +4,6 @@ import {
   FlatList,
   Image,
   NativeModules,
-  ScrollView,
   Text,
   ToastAndroid,
   TouchableOpacity,
@@ -12,9 +11,8 @@ import {
 } from 'react-native';
 import {commonStyles} from '../utils/commonStyles';
 import Events from '../components/home/Events';
-import Database from '../utils/Database';
 import {DB} from '../utils/globals';
-import {Logs} from '../schemas/Logs';
+
 var moment = require('moment-jalaali');
 interface State {
   id: number;
@@ -28,8 +26,8 @@ interface Log {
 function Device({navigation}: any) {
   const {SmsModule} = NativeModules;
   const route = useRoute();
-  const [state, setState] = useState<State>();
-  const [logs, setLogs] = useState<Log[]>([]);
+  const [state, setState] = useState<State | any>();
+  const [logs, setLogs] = useState<Log[] | any[]>([]);
   const [lastSync, setLastSync] = useState(
     moment().format('jYYYY/jM/jD  HH:mm'),
   );
@@ -47,7 +45,11 @@ function Device({navigation}: any) {
     getLogs();
   }
 
-  async function updateState(value: string, translate: string, command: string) {
+  async function updateState(
+    value: string,
+    translate: string,
+    command: string,
+  ) {
     if (state) {
       DB.update(1, state.id, {value});
       const newState = DB.get(1, state.id);
@@ -127,7 +129,7 @@ function Device({navigation}: any) {
             alignItems: 'flex-end',
           }}>
           <TouchableOpacity
-            onPress={() => updateState('lock','فعال', '1111')}
+            onPress={() => updateState('lock', 'فعال', '1111')}
             style={[
               commonStyles.button_icon,
               {opacity: state?.value === 'lock' ? 1 : 0.4},
@@ -153,7 +155,7 @@ function Device({navigation}: any) {
           </TouchableOpacity>
 
           <TouchableOpacity
-            onPress={() => updateState('unlock','غیرفعال', '1113')}
+            onPress={() => updateState('unlock', 'غیرفعال', '1113')}
             style={[
               commonStyles.button_icon,
               {opacity: state?.value === 'unlock' ? 1 : 0.4},
@@ -167,6 +169,7 @@ function Device({navigation}: any) {
         </View>
       </View>
       <View style={commonStyles.main_2}>
+    
         <View
           style={{
             flexDirection: 'row',
@@ -177,12 +180,14 @@ function Device({navigation}: any) {
           <Text style={[commonStyles.text, {color: '#333'}]}>وقایع</Text>
         </View>
         <View style={{flex: 6, marginHorizontal: 10}}>
-            <FlatList
-              data={logs}
-              contentContainerStyle={{paddingBottom: 20}}
-              keyExtractor={(item, index) => index.toString()}
-              renderItem={({item}) => <Events text={item.string} date={item.date} />}
-            />
+          <FlatList
+            data={logs}
+            contentContainerStyle={{paddingBottom: 20}}
+            keyExtractor={(item, index) => index.toString()}
+            renderItem={({item}) => (
+              <Events text={item.string} date={item.date} />
+            )}
+          />
         </View>
       </View>
       <View style={commonStyles.main_3}>
@@ -195,7 +200,9 @@ function Device({navigation}: any) {
             امنیت
           </Text>
         </TouchableOpacity>
-        <TouchableOpacity style={[commonStyles.button_icon_black]}>
+        <TouchableOpacity
+          style={[commonStyles.button_icon_black]}
+          onPress={() => navigation?.navigate('SmartHome', {item})}>
           <Image
             source={require('../assets/icons/light.png')}
             style={commonStyles.iconImageHalf}

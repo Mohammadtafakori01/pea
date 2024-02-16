@@ -17,6 +17,18 @@ const stack = createNativeStackNavigator();
 import {NativeModules} from 'react-native';
 import FullscreenComponent from './components/home/FullScreenComponent';
 import MenuComponent from './components/home/MenuComponent';
+import SmartHome from './screens/SmartHome';
+import Zones from './screens/Zones';
+import DingDong from './screens/DingDong';
+import DateTime from './screens/DateTime';
+import Users from './screens/Users';
+import PNumbers from './screens/PNumbers';
+import Reports from './screens/Report';
+import SimSettings from './screens/SimSettings';
+import Remotes from './screens/Remotes';
+import Chirps from './screens/Chirps';
+import CallTypes from './screens/CallTypes';
+import Alarms from './screens/Alarms';
 // import Database from './utils/Database';
 // import { PersonSchema } from './utils/PersonSchema';
 // import { PersonSchemaa } from './utils/PersonSchemaa';
@@ -163,6 +175,215 @@ function App(): React.JSX.Element {
             />
 
             <stack.Screen
+              name="Zones"
+              component={Zones}
+              options={{
+                title: 'تنظیمات زون ها',
+                headerRight: () => (
+                  <TouchableOpacity
+                    onPress={toggleMenu}>
+                    <View style={commonStyles.burger}>
+                      <Image
+                        style={commonStyles.icon}
+                        source={require('./assets/icons/menu.png')}
+                      />
+                    </View>
+                  </TouchableOpacity>
+                ),
+              }}
+            />
+
+            <stack.Screen
+              name="DingDong"
+              component={DingDong}
+              options={{
+                title: 'تنظیمات  دینگ دانگ',
+                headerRight: () => (
+                  <TouchableOpacity
+                    onPress={toggleMenu}>
+                    <View style={commonStyles.burger}>
+                      <Image
+                        style={commonStyles.icon}
+                        source={require('./assets/icons/menu.png')}
+                      />
+                    </View>
+                  </TouchableOpacity>
+                ),
+              }}
+            />
+
+            <stack.Screen
+              name="DateTime"
+              component={DateTime}
+              options={{
+                title: 'تنظیمات   تاریخ و زمان',
+                headerRight: () => (
+                  <TouchableOpacity
+                    onPress={toggleMenu}>
+                    <View style={commonStyles.burger}>
+                      <Image
+                        style={commonStyles.icon}
+                        source={require('./assets/icons/menu.png')}
+                      />
+                    </View>
+                  </TouchableOpacity>
+                ),
+              }}
+            />
+
+            <stack.Screen
+              name="Reports"
+              component={Reports}
+              options={{
+                title: 'تنظیمات گزارش به مدیران',
+                headerRight: () => (
+                  <TouchableOpacity
+                    onPress={toggleMenu}>
+                    <View style={commonStyles.burger}>
+                      <Image
+                        style={commonStyles.icon}
+                        source={require('./assets/icons/menu.png')}
+                      />
+                    </View>
+                  </TouchableOpacity>
+                ),
+              }}
+            />
+
+            <stack.Screen
+              name="SimSettings"
+              component={SimSettings}
+              options={{
+                title: 'تنظیمات  سیم کارت ',
+                headerRight: () => (
+                  <TouchableOpacity
+                    onPress={toggleMenu}>
+                    <View style={commonStyles.burger}>
+                      <Image
+                        style={commonStyles.icon}
+                        source={require('./assets/icons/menu.png')}
+                      />
+                    </View>
+                  </TouchableOpacity>
+                ),
+              }}
+            />
+
+            <stack.Screen
+              name="Users"
+              component={Users}
+              options={{
+                title: 'تنظیمات کاربرها ',
+                headerRight: () => (
+                  <TouchableOpacity
+                    onPress={toggleMenu}>
+                    <View style={commonStyles.burger}>
+                      <Image
+                        style={commonStyles.icon}
+                        source={require('./assets/icons/menu.png')}
+                      />
+                    </View>
+                  </TouchableOpacity>
+                ),
+              }}
+            />
+
+            <stack.Screen
+              name="PNumbers"
+              component={PNumbers}
+              options={{
+                title: 'تنظیمات شماره ها ',
+                headerRight: () => (
+                  <TouchableOpacity
+                    onPress={toggleMenu}>
+                    <View style={commonStyles.burger}>
+                      <Image
+                        style={commonStyles.icon}
+                        source={require('./assets/icons/menu.png')}
+                      />
+                    </View>
+                  </TouchableOpacity>
+                ),
+              }}
+            />
+
+            <stack.Screen
+              name="Remotes"
+              component={Remotes}
+              options={{
+                title: 'ریموت',
+                headerRight: () => (
+                  <TouchableOpacity
+                    onPress={toggleMenu}>
+                    <View style={commonStyles.burger}>
+                      <Image
+                        style={commonStyles.icon}
+                        source={require('./assets/icons/menu.png')}
+                      />
+                    </View>
+                  </TouchableOpacity>
+                ),
+              }}
+            />
+
+            <stack.Screen
+              name="Alarms"
+              component={Alarms}
+              options={{
+                title: 'تنظیمات آژیر',
+                headerRight: () => (
+                  <TouchableOpacity
+                    onPress={toggleMenu}>
+                    <View style={commonStyles.burger}>
+                      <Image
+                        style={commonStyles.icon}
+                        source={require('./assets/icons/menu.png')}
+                      />
+                    </View>
+                  </TouchableOpacity>
+                ),
+              }}
+            />
+
+            <stack.Screen
+              name="Chirps"
+              component={Alarms}
+              options={{
+                title: 'تنظیمات آژیر',
+                headerRight: () => (
+                  <TouchableOpacity
+                    onPress={toggleMenu}>
+                    <View style={commonStyles.burger}>
+                      <Image
+                        style={commonStyles.icon}
+                        source={require('./assets/icons/menu.png')}
+                      />
+                    </View>
+                  </TouchableOpacity>
+                ),
+              }}
+            />
+
+            <stack.Screen
+              name="CallTypes"
+              component={CallTypes}
+              options={{
+                title: 'تنظیمات نوع تماس',
+                headerRight: () => (
+                  <TouchableOpacity
+                    onPress={toggleMenu}>
+                    <View style={commonStyles.burger}>
+                      <Image
+                        style={commonStyles.icon}
+                        source={require('./assets/icons/menu.png')}
+                      />
+                    </View>
+                  </TouchableOpacity>
+                ),
+              }}
+            />
+
+            <stack.Screen
               name="Device"
               component={Device}
               options={{
@@ -180,6 +401,28 @@ function App(): React.JSX.Element {
                 ),
               }}
             />
+
+
+            <stack.Screen
+              name="SmartHome"
+              component={SmartHome}
+              options={{
+                title: 'خانه هوشمند',
+                headerRight: () => (
+                  <TouchableOpacity
+                    onPress={toggleMenu}>
+                    <View style={commonStyles.burger}>
+                      <Image
+                        style={commonStyles.icon}
+                        source={require('./assets/icons/menu.png')}
+                      />
+                    </View>
+                  </TouchableOpacity>
+                ),
+              }}
+            />
+
+            
           </stack.Navigator>
           {isMenuOpen && <MenuComponent onClose={toggleMenu} />}
         </NavigationContainer>

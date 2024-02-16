@@ -144,6 +144,35 @@ export default class Database {
     }
   }
 
+  public getAllByDeviceNumber(i: number, deviceNumber: number) {
+    try {
+      if (!this.realm) {
+        throw new Error(
+          'Realm is not initialized. Call initializeRealm before using getAllData.',
+        );
+      }
+
+      // Assume the schema name is the first schema in the list
+      const schemaName = this.schemas[i]?.name;
+
+      if (!schemaName) {
+        throw new Error(
+          'No schema found. Make sure to provide at least one schema when creating the Database instance.',
+        );
+      }
+
+   
+      const allData = this.realm.objects(schemaName).filtered(`device_id == ${deviceNumber}`);
+
+      return allData;
+    } catch (error) {
+      const dvs: [] = [];
+      console.error('Error retrieving all data:', error);
+   
+      return dvs;
+    }
+  }
+
   public insert(i: number, data: RealmData) {
     try {
       if (!this.realm) {

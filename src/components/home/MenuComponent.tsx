@@ -8,136 +8,257 @@ import {
   ScrollView,
 } from 'react-native';
 import {commonStyles} from '../../utils/commonStyles';
-import { useNavigation } from '@react-navigation/native';
+import {
+  NavigationContainerProps,
+  NavigationProp,
+  useNavigation,
+} from '@react-navigation/native';
+import {options} from '../../utils/globals';
 
+interface INav {
+  navigate: (route: string) => void;
+}
 const MenuComponent = ({onClose}: any) => {
-    const naviagation = useNavigation();
+  const navigation: INav = useNavigation();
   return (
     <View style={styles.menuContainer}>
       <TouchableOpacity
         style={styles.space}
         onPress={onClose}></TouchableOpacity>
-
       <View style={styles.menu}>
         <View style={styles.menu_top}>
-          <Text style={{color: '#fff'}}>Your Logo</Text>
+          <Image
+            style={{width: 150, height: 150}}
+            source={require('../../assets/logo.png')}
+          />
         </View>
-  
-          <ScrollView contentContainerStyle={styles.menu_bottom}>
-            {/* item */}
-            <TouchableOpacity style={styles.item}>
-              <Image
-                source={require('../../assets/icons/add.png')}
-                style={commonStyles.icon}
-              />
-              <Text style={[commonStyles.text, {fontSize: 15}]}>تنظمات محل نصب</Text>
-            </TouchableOpacity>
-            {/* item */}
-            <TouchableOpacity style={styles.item}>
-              <Image
-                source={require('../../assets/icons/add.png')}
-                style={commonStyles.icon}
-              />
-              <Text style={[commonStyles.text, {fontSize: 15}]}>تنظیمات نرم افزار</Text>
-            </TouchableOpacity>
-            {/* item */}
-            <TouchableOpacity style={styles.item}>
-              <Image
-                source={require('../../assets/icons/add.png')}
-                style={commonStyles.icon}
-              />
-              <Text style={[commonStyles.text, {fontSize: 15}]}>شماره ها</Text>
-            </TouchableOpacity>
-            {/* item */}
-            <TouchableOpacity style={styles.item}>
-              <Image
-                source={require('../../assets/icons/add.png')}
-                style={commonStyles.icon}
-              />
-              <Text style={[commonStyles.text, {fontSize: 15}]}>نام زون ها</Text>
-            </TouchableOpacity>
-            {/* item */}
-            <TouchableOpacity style={styles.item}>
-              <Image
-                source={require('../../assets/icons/add.png')}
-                style={commonStyles.icon}
-              />
-              <Text style={[commonStyles.text, {fontSize: 15}]}>کنترل زون ها</Text>
-            </TouchableOpacity>
-            {/* item */}
-            <TouchableOpacity style={styles.item}>
-              <Image
-                source={require('../../assets/icons/add.png')}
-                style={commonStyles.icon}
-              />
-              <Text style={[commonStyles.text, {fontSize: 15}]}>نام کاربرها</Text>
-            </TouchableOpacity>
-            {/* item */}
-            <TouchableOpacity style={styles.item}>
-              <Image
-                source={require('../../assets/icons/add.png')}
-                style={commonStyles.icon}
-              />
-              <Text style={[commonStyles.text, {fontSize: 15}]}>تنظیمات  خروجی ها</Text>
-            </TouchableOpacity>
-            {/* item */}
-            <TouchableOpacity style={styles.item}>
-              <Image
-                source={require('../../assets/icons/add.png')}
-                style={commonStyles.icon}
-              />
-              <Text style={[commonStyles.text, {fontSize: 15}]}>متن تحریک</Text>
-            </TouchableOpacity>
-            {/* item */}
-            <TouchableOpacity style={styles.item}>
-              <Image
-                source={require('../../assets/icons/add.png')}
-                style={commonStyles.icon}
-              />
-              <Text style={[commonStyles.text, {fontSize: 15}]}>تنظیم زمان سنج</Text>
-            </TouchableOpacity>
-            {/* item */}
-            <TouchableOpacity style={styles.item}>
-              <Image
-                source={require('../../assets/icons/add.png')}
-                style={commonStyles.icon}
-              />
-              <Text style={[commonStyles.text, {fontSize: 15}]}>تنظیمات پنل</Text>
-            </TouchableOpacity>
-            {/* item */}
-            <TouchableOpacity style={styles.item}>
-              <Image
-                source={require('../../assets/icons/add.png')}
-                style={commonStyles.icon}
-              />
-              <Text style={[commonStyles.text, {fontSize: 15}]}>تنظیمات بیشتر </Text>
-            </TouchableOpacity>
-            {/* item */}
-            <TouchableOpacity style={styles.item}>
-              <Image
-                source={require('../../assets/icons/add.png')}
-                style={commonStyles.icon}
-              />
-              <Text style={[commonStyles.text, {fontSize: 15}]}>اشتراک گذاری </Text>
-            </TouchableOpacity>
-            {/* item */}
-            <TouchableOpacity style={styles.item} onPress={() => naviagation.navigate('AboutUs')}>
-              <Image
-                source={require('../../assets/icons/add.png')}
-                style={commonStyles.icon}
-              />
-              <Text style={[commonStyles.text, {fontSize: 15}]}>درباره ما</Text>
-            </TouchableOpacity>
-            {/* item */}
-            <TouchableOpacity style={styles.item}>
-              <Image
-                source={require('../../assets/icons/add.png')}
-                style={commonStyles.icon}
-              />
-              <Text style={[commonStyles.text, {fontSize: 15}]}>راهنمای استفاده</Text>
-            </TouchableOpacity>
-          </ScrollView>
-   
+
+        <ScrollView contentContainerStyle={styles.menu_bottom}>
+          <TouchableOpacity style={styles.item}>
+            <Image
+              source={require('../../assets/icons/add.png')}
+              style={commonStyles.icon}
+            />
+            <Text style={[commonStyles.text, {fontSize: 15}]}>
+              تنظیمات نرم افزار
+            </Text>
+          </TouchableOpacity>
+          {options.device_id !== 0 && (
+            <>
+              {/* item */}
+              {/* <TouchableOpacity style={styles.item}>
+                <Image
+                  source={require('../../assets/icons/add.png')}
+                  style={commonStyles.icon}
+                />
+                <Text style={[commonStyles.text, {fontSize: 15}]}>
+                  تنظیمات محل نصب
+                </Text>
+              </TouchableOpacity> */}
+              {/* item */}
+              {/* item */}
+              <TouchableOpacity
+                style={styles.item}
+                onPress={() => {
+                  navigation.navigate('DateTime');
+                  onClose();
+                }}>
+                <Image
+                  source={require('../../assets/icons/add.png')}
+                  style={commonStyles.icon}
+                />
+                <Text style={[commonStyles.text, {fontSize: 15}]}>
+                  تنظیم تاریخ و زمان
+                </Text>
+              </TouchableOpacity>
+              {/* item */}
+              <TouchableOpacity
+                style={styles.item}
+                onPress={() => {
+                  navigation.navigate('Users');
+                  onClose();
+                }}>
+                <Image
+                  source={require('../../assets/icons/add.png')}
+                  style={commonStyles.icon}
+                />
+                <Text style={[commonStyles.text, {fontSize: 15}]}>
+                  تنظیمات کاربرها
+                </Text>
+              </TouchableOpacity>
+              {/* item */}
+              {/* item */}
+              <TouchableOpacity
+                style={styles.item}
+                onPress={() => {
+                  navigation.navigate('PNumbers');
+                  onClose();
+                }}>
+                <Image
+                  source={require('../../assets/icons/add.png')}
+                  style={commonStyles.icon}
+                />
+                <Text style={[commonStyles.text, {fontSize: 15}]}>
+                  تنظیمات شماره ها
+                </Text>
+              </TouchableOpacity>
+              {/* item */}
+              <TouchableOpacity
+                style={styles.item}
+                onPress={() => {
+                  navigation.navigate('Zones');
+                  onClose();
+                }}>
+                <Image
+                  source={require('../../assets/icons/add.png')}
+                  style={commonStyles.icon}
+                />
+                <Text style={[commonStyles.text, {fontSize: 15}]}>
+                  کنترل زون ها
+                </Text>
+              </TouchableOpacity>
+              {/* item */}
+              <TouchableOpacity
+                style={styles.item}
+                onPress={() => {
+                  navigation.navigate('Reports');
+                  onClose();
+                }}>
+                <Image
+                  source={require('../../assets/icons/add.png')}
+                  style={commonStyles.icon}
+                />
+                <Text style={[commonStyles.text, {fontSize: 15}]}>
+                  تنظیمات گزارش ها
+                </Text>
+              </TouchableOpacity>
+              {/* item */}
+                {/* item */}
+                <TouchableOpacity
+                style={styles.item}
+                onPress={() => {
+                  navigation.navigate('Alarms');
+                  onClose();
+                }}>
+                <Image
+                  source={require('../../assets/icons/add.png')}
+                  style={commonStyles.icon}
+                />
+                <Text style={[commonStyles.text, {fontSize: 15}]}>تنظیمات آژیر</Text>
+              </TouchableOpacity>
+              {/* item */}
+              {/* item */}
+              <TouchableOpacity
+                style={styles.item}
+                onPress={() => {
+                  navigation.navigate('Remotes');
+                  onClose();
+                }}>
+                <Image
+                  source={require('../../assets/icons/add.png')}
+                  style={commonStyles.icon}
+                />
+                <Text style={[commonStyles.text, {fontSize: 15}]}>تنظیمات ریموت</Text>
+              </TouchableOpacity>
+              {/* item */}
+            
+              <TouchableOpacity
+                style={styles.item}
+                onPress={() => {
+                  navigation.navigate('DingDong');
+                  onClose();
+                }}>
+                <Image
+                  source={require('../../assets/icons/add.png')}
+                  style={commonStyles.icon}
+                />
+                <Text style={[commonStyles.text, {fontSize: 15}]}>
+                  تنظیمات دینگ دانگ
+                </Text>
+              </TouchableOpacity>
+              {/* item */}
+              <TouchableOpacity
+                style={styles.item}
+                onPress={() => {
+                  navigation.navigate('Chirps');
+                  onClose();
+                }}>
+                <Image
+                  source={require('../../assets/icons/add.png')}
+                  style={commonStyles.icon}
+                />
+                <Text style={[commonStyles.text, {fontSize: 15}]}>تنظیمات چیرپ</Text>
+              </TouchableOpacity>
+              {/* item */}
+              {/* item */}
+              <TouchableOpacity
+                style={styles.item}
+                onPress={() => {
+                  navigation.navigate('CallTypes');
+                  onClose();
+                }}>
+                <Image
+                  source={require('../../assets/icons/add.png')}
+                  style={commonStyles.icon}
+                />
+                <Text style={[commonStyles.text, {fontSize: 15}]}>تنظیمات نوع تماس</Text>
+              </TouchableOpacity>
+              {/* item */}
+
+           
+              {/* item */}
+              <TouchableOpacity
+                style={styles.item}
+                onPress={() => {
+                  navigation.navigate('SimSettings');
+                  onClose();
+                }}>
+                <Image
+                  source={require('../../assets/icons/add.png')}
+                  style={commonStyles.icon}
+                />
+                <Text style={[commonStyles.text, {fontSize: 15}]}>
+                  تنظیمات سیم کارت{' '}
+                </Text>
+              </TouchableOpacity>
+            </>
+          )}
+          {/* item */}
+
+          {/* item */}
+          <TouchableOpacity style={styles.item}>
+            <Image
+              source={require('../../assets/icons/add.png')}
+              style={commonStyles.icon}
+            />
+            <Text style={[commonStyles.text, {fontSize: 15}]}>
+              اشتراک گذاری نرم افزار
+            </Text>
+          </TouchableOpacity>
+          {/* item */}
+          <TouchableOpacity
+            style={styles.item}
+            onPress={() => {
+              navigation.navigate('AboutUs');
+              onClose();
+            }}>
+            <Image
+              source={require('../../assets/icons/add.png')}
+              style={commonStyles.icon}
+            />
+            <Text style={[commonStyles.text, {fontSize: 15}]}>درباره ما</Text>
+          </TouchableOpacity>
+          {/* item */}
+          <TouchableOpacity style={styles.item}>
+            <Image
+              source={require('../../assets/icons/add.png')}
+              style={commonStyles.icon}
+            />
+            <Text style={[commonStyles.text, {fontSize: 15}]}>
+              راهنمای تنظیمات
+            </Text>
+          </TouchableOpacity>
+        </ScrollView>
       </View>
     </View>
   );
@@ -151,7 +272,7 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: '#aaa',
     height: 40,
-    padding: 10,
+    padding: 8,
     borderRadius: 10,
   },
   menuContainer: {

@@ -151,6 +151,7 @@ export const commonStyles = StyleSheet.create({
   addButtonText: {
     color: '#fff',
     fontSize: 16,
+    fontFamily: "Samim"
   },
   icon: {
     width: 32,
