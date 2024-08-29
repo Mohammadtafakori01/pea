@@ -347,7 +347,7 @@ function App(): React.JSX.Element {
 
             <stack.Screen
               name="Chirps"
-              component={Alarms}
+              component={Chirps}
               options={{
                 title: 'تنظیمات آژیر',
                 headerRight: () => (
